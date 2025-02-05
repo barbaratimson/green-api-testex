@@ -40,7 +40,7 @@ export const ChatWindow = memo(({chatId}: ChatWindowProps) => {
         <div className="chat-window">
             <div className="chat-wrapper">
                 <div className="chat-header">{chatId}</div>
-                <MessagesWindow ref={endAnch} chatMessages={chatMessages} setChatMessages={setChatMessages}
+                <MessagesWindow chatMessages={chatMessages} setChatMessages={setChatMessages}
                                 chatId={chatId}/>
                 <div className="chat-footer">
                     <Input value={messageText} onChange={(e) => {
