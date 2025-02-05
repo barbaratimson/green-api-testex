@@ -1,0 +1,19 @@
+@use '../../styles/vars';
+
+.input {
+  width: 100%;
+  background-color: vars.$input-color;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgb(115, 129, 139);
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

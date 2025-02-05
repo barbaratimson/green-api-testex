@@ -1,0 +1,30 @@
+@use "../../../styles/vars";
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 5px;
+  padding: 10px;
+  background-color: vars.$outgoing-message-background;
+  border-radius: 8px;
+
+  &.incoming-message {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: vars.$incoming-message-background;
+    align-self: start;
+  }
+
+}
+
+.message-time {
+  font-size: 10px;
+  color: vars.$icon-color;
+}
+
+.message-text {
+  font-size: 14px;
+}
+
+
