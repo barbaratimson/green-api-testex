@@ -17,7 +17,6 @@ function Main() {
     const dispatch = useAppDispatch()
     const [chat, setChat] = useState("")
     const user = useAppSelector(state => state.user)
-    const [userAuthActive, setUserAuthActive] = useState(false)
     const [inputHidden, setInputHidden] = useState(true)
     const setUserFunc = (user: userState) => dispatch(setUser(user))
 

@@ -1,8 +1,6 @@
 import {useEffect} from "react";
-import axios from "axios";
 import {useAppSelector} from "../../../store/store.ts";
 import './Message.scss'
-import {apiLink} from "../../Main/Main.tsx";
 import {markReadMessage} from "../../../utils/apiRequests.ts";
 import {getTime} from "../../../utils/utils.ts";
 

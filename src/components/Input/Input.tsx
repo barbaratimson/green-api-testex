@@ -1,6 +1,5 @@
 import {ChangeEvent} from "react";
 import "./Input.scss"
-import * as path from "path";
 
 interface InputProps {
     value: string | number

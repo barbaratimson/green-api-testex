@@ -1,7 +1,8 @@
-import {MessageT} from "../store/slices/Messages.slice.ts";
+import {MessageT} from "../components/ChatWindow/Message/Message.tsx";
 
 export const localMessage = (text: string, messageId: string): MessageT => {
     return {
+        receiptId: 0,
         body: {
             idMessage: messageId,
             timestamp: Math.floor(new Date().getTime() / 1000),

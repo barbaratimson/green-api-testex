@@ -1,7 +1,7 @@
 import './ChatWindow.scss'
-import {useAppDispatch, useAppSelector} from "../../store/store.ts";
+import {useAppSelector} from "../../store/store.ts";
 import axios from "axios";
-import {forwardRef, memo, useEffect, useRef, useState} from "react";
+import {memo, useEffect, useRef, useState} from "react";
 import {Input} from "../Input/Input.tsx";
 import {Button} from "../Button/Button.tsx";
 import {SendIcon} from "../../assets/SendIcon.tsx";
@@ -18,21 +18,18 @@ interface ChatWindowProps {
 export const ChatWindow = memo(({chatId}: ChatWindowProps) => {
     const userInfo = useAppSelector(state => state.user)
     const [messageText, setMessageText] = useState<string>("")
-    const endAnch = useRef<HTMLDivElement>(null)
     const [chatMessages, setChatMessages] = useState<MessageT[]>([])
 
     const sendMessage = async () => {
         try {
-            const response = await axios.post(
+            const response = await axios.post<{idMessage: string}>(
                 `${apiLink}/waInstance${userInfo.idInstance}/sendMessage/${userInfo.apiTokenInstance}`, {
                     "chatId": chatId,
                     "message": messageText
                 }, {headers: {'Content-Type': 'application/json'}})
-            console.log(response.data);
             setChatMessages([...chatMessages, localMessage(messageText, response.data.idMessage)])
         } catch (err) {
-            console.error('Error sending message:', err);
-            console.log(err)
+            throw('Error sending message:');
         }
     }
 
@@ -73,15 +70,13 @@ const MessagesWindow = ({chatMessages, setChatMessages, chatId}: MessagesWindowP
 
     };
 
-    const getMessages = async () => {
+    const getMessages = async (): Promise<MessageT> => {
         try {
-            const response = await axios.get(
+            const response = await axios.get<MessageT>(
                 `${apiLink}/waInstance${userInfo.idInstance}/receiveNotification/${userInfo.apiTokenInstance}`);
             return response.data;
         } catch (err) {
-            if (err.name !== "AbortError") {
-                console.error("Error getting notifications:", err);
-            }
+                throw (err);
         }
     };
 

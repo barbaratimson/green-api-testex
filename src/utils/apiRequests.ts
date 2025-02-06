@@ -9,7 +9,6 @@ export const markReadMessage = async (receiptId: number, userInfo: userState) =>
             `${apiLink}/waInstance${userInfo.idInstance}/deleteNotification/${userInfo.apiTokenInstance}/${receiptId}`);
         return response.data
     } catch (err) {
-        console.error('Ошибка при получении списка треков:', err);
-        console.log(err)
+        throw(err);
     }
 }

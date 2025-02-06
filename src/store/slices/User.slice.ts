@@ -5,7 +5,7 @@ export interface userState {
     apiTokenInstance: string;
 }
 
-const savedCurrentUser = JSON.parse(localStorage.getItem("currentUser"))
+const savedCurrentUser = JSON.parse(localStorage.getItem("currentUser") ?? "")
 export const initialState: userState = {
     idInstance: savedCurrentUser ? savedCurrentUser.idInstance : "",
     apiTokenInstance: savedCurrentUser ? savedCurrentUser.apiTokenInstance : ""
