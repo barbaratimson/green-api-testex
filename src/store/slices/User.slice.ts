@@ -1,12 +1,14 @@
 import {createSlice, current, PayloadAction} from '@reduxjs/toolkit'
 
-const savedLocalUser = localStorage.getItem("currentUser")
-const savedCurrentUser: userState = savedLocalUser && JSON.parse(localStorage.getItem("currentUser"))
-
 export interface userState {
     idInstance: string;
     apiTokenInstance: string;
 }
+
+
+//@ts-ignore
+const savedCurrentUser: userState = JSON.parse(localStorage.getItem("teeMeasuresAverages"))
+
 
 export const initialState: userState = {
     idInstance: savedCurrentUser ? savedCurrentUser.idInstance : "",
