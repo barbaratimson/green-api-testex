@@ -7,7 +7,7 @@ export interface userState {
 
 
 //@ts-ignore
-const savedCurrentUser: userState = JSON.parse(localStorage.getItem("teeMeasuresAverages"))
+const savedCurrentUser: userState = JSON.parse(localStorage.getItem("currentUser"))
 
 
 export const initialState: userState = {
